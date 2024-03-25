@@ -3,37 +3,27 @@ namespace APBD_Cw2.Base;
 public class Container
 {
     public string SerialNumber { get; }
-    public string Type { get; }
-    public double MaxLoad { get; }
-    public double EmptyWeight { get; }
-    public double LoadWeight { get; private set; }
+    public double CargoWeight { get; private set; }
     public double Height { get; }
+    public double OwnWeight { get; }
     public double Depth { get; }
+    public double MaxLoad { get; }
 
-    public Container(string type, double maxLoad, double emptyWeight, double height, double depth)
+    public Container(string serialNumber, double maxLoad, double ownWeight, double height, double depth)
     {
-        SerialNumber = GenerateSerialNumber(type);
-        Type = type;
+        SerialNumber = serialNumber;
         MaxLoad = maxLoad;
-        EmptyWeight = emptyWeight;
-        LoadWeight = 0;
+        OwnWeight = ownWeight;
         Height = height;
         Depth = depth;
     }
 
-    private string GenerateSerialNumber(string type)
+    public void LoadCargo(double weight)
     {
-        Random random = new Random();
-        int randomNumber = random.Next(1, 1000);
-        return $"KON-{type}-C-{randomNumber}";
-    }
-
-    public void Load(double cargoWeight)
-    {
-        if (LoadWeight + cargoWeight <= MaxLoad)
+        if (CargoWeight + weight <= MaxLoad)
         {
-            LoadWeight += cargoWeight;
-            Console.WriteLine($"Cargo loaded: {cargoWeight} kg");
+            CargoWeight += weight;
+            Console.WriteLine($"Cargo loaded: {weight} kg");
         }
         else
         {
@@ -41,9 +31,9 @@ public class Container
         }
     }
 
-    public void Unload()
+    public void UnloadCargo()
     {
-        LoadWeight = 0;
+        CargoWeight = 0;
         Console.WriteLine("Cargo unloaded.");
     }
 }
