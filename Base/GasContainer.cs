@@ -31,6 +31,6 @@ public class GasContainer : Container, IHazardNotifier
     public void UnloadCargo()
     {
         base.UnloadCargo();
-        Pressure = 0.05 * MaxLoad;
+        Pressure = 0.05 * MaxLoad; 
     }
 }

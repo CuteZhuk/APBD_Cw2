@@ -11,7 +11,7 @@ public class LiquidContainer : Container, IHazardNotifier
     {
         Console.WriteLine($"Dangerous situation detected in liquid container: {containerSerialNumber}");
     }
-    
+
     public void LoadCargo(double weight)
     {
         if (weight <= MaxLoad * 0.5)

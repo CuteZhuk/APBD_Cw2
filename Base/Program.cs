@@ -1,14 +1,18 @@
 namespace APBD_Cw2.Base;
 
-class Program
+public class Program
 {
     static void Main(string[] args)
     {
-        Container container = new Container("A", 5000, 1000, 200, 150);
-        
         ContainerShip ship = new ContainerShip("Ocean Voyager", 20, 200, 50000);
         LiquidContainer liquidContainer = new LiquidContainer("KON-L-C-1", 5000, 1000, 200, 150);
-        ship.LoadContainer(liquidContainer);
+        GasContainer gasContainer = new GasContainer("KON-G-C-1", 6000, 1200, 210, 160);
+        RefrigeratedContainer refrigeratedContainer = new RefrigeratedContainer("KON-C-C-1", 7000, 1500, 220, 170, "Bananas", 13.3);
 
+        ship.LoadContainer(liquidContainer);
+        ship.LoadContainer(gasContainer);
+        ship.LoadContainer(refrigeratedContainer);
+
+        ship.PrintShipInfo();
     }
 }
